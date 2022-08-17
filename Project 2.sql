@@ -183,8 +183,7 @@ FROM		   Person.Person  P
 			   ON ED.DepartmentID = D.DepartmentID
 ) O
 ORDER BY O.Name,Seniority	
-
-10. 
+ 
 
 
 
