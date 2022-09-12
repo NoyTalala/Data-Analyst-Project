@@ -183,6 +183,19 @@ FROM		   Person.Person  P
 			   ON ED.DepartmentID = D.DepartmentID
 ) O
 ORDER BY O.Name,Seniority	
+
+
+10. 
+SELECT         ED.StartDate,D.DepartmentID 
+              ,STRING_AGG(CONCAT(P.BusinessEntityID,' ',P.LastName,' ',P.FirstName),',') WITHIN GROUP (ORDER BY ED.StartDate) AS Employee_list
+FROM		   Person.Person  P
+               JOIN HumanResources.Employee E
+               ON P.BusinessEntityID = E.BusinessEntityID
+               JOIN HumanResources.EmployeeDepartmentHistory ED
+			   ON E.BusinessEntityID = ED.BusinessEntityID
+			   JOIN HumanResources.Department D
+			   ON ED.DepartmentID = D.DepartmentID
+GROUP BY       D.DepartmentID,ED.StartDate
  
 
 
